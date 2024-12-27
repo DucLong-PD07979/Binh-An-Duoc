@@ -1,10 +1,12 @@
 import { cn } from '../../utils/helpers/mergeClasses';
 import PropTypes from 'prop-types';
 
-const SectionWrapper = ({ addClassNames = {}, title = 'Bình An Dược', children, ...props }) => {
+const SectionWrapper = ({ addClassNames = {}, title = '', children, ...props }) => {
   return (
     <div className={cn('py-6 w-full', addClassNames.wrapper)} {...props}>
-      <h1 className={cn('text-[22px] font-medium capitalize text-gray-700', addClassNames.title)}>{title}</h1>
+      {title && (
+        <h2 className={cn('text-[22px] font-medium capitalize text-gray-700', addClassNames.title)}>{title}</h2>
+      )}
       {children}
     </div>
   );

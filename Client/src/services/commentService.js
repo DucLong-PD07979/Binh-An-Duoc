@@ -3,9 +3,9 @@ import END_POIND_API from '../utils/helpers/endpoind';
 import { showToastError, showToastSuccess } from '../configs/toastConfig';
 
 const commentServices = {
-  addComment: async (resquestParrams, requestBody) => {
+  addComment: async (requestParams, requestBody) => {
     try {
-      const { data } = await http.post(`${END_POIND_API.COMMENT}/${resquestParrams}`, requestBody);
+      const { data } = await http.post(`${END_POIND_API.COMMENT}/${requestParams}`, requestBody);
       if (!data) return;
       showToastSuccess(data.message);
       return data;
@@ -13,9 +13,9 @@ const commentServices = {
       showToastError(error.response.data.message);
     }
   },
-  getCommentsByProductId: async (resquestParrams) => {
+  getCommentsByProductId: async (requestParams) => {
     try {
-      const { data } = await http.get(`${END_POIND_API.COMMENT}/${resquestParrams}`);
+      const { data } = await http.get(`${END_POIND_API.COMMENT}/${requestParams}`);
       return data;
     } catch (error) {
       showToastError(error.response.data.message);
@@ -31,9 +31,9 @@ const commentServices = {
       console.log(error.message);
     }
   },
-  updateComment: async (resquestParrams, requestBody) => {
+  updateComment: async (requestParams, requestBody) => {
     try {
-      const { data } = await http.put(`${END_POIND_API.COMMENT}/${resquestParrams}`, requestBody);
+      const { data } = await http.put(`${END_POIND_API.COMMENT}/${requestParams}`, requestBody);
       showToastSuccess(data.message || 'Cập nhật comment thành công');
       return data;
     } catch (error) {
@@ -48,6 +48,16 @@ const commentServices = {
       return data;
     } catch (error) {
       showToastError(error.response?.data?.message || 'Lỗi khi xoá comment');
+      console.log(error);
+    }
+  },
+  getCommentFeedback: async (requestParams) => {
+    try {
+      const { data } = await http.get(`${END_POIND_API.COMMENT}/list`);
+      console.log(data);
+      return data;
+    } catch (error) {
+      showToastError(error.response.data.message);
       console.log(error);
     }
   }

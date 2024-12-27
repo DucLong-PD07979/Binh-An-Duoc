@@ -98,6 +98,23 @@ const commentController = {
     } catch (error) {
       res.status(500).json({ mesage: error.message });
     }
+  },
+  getCommentsWithLimit: async (req, res) => {
+    try {
+      const { limit } = req.query;
+      const limitValue = parseInt(limit, 10) || 4;
+      const allComments = await Comment.find()
+        .limit(limitValue)
+        .populate('user_id', 'fullname email avatar')
+        .populate('product_id', 'name');
+      if (!allComments || allComments.length === 0) {
+        return res.status(404).json({ error: '' });
+      }
+
+      res.status(200).json(allComments);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
   }
 };
 

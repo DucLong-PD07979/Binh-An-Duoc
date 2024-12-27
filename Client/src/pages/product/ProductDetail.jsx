@@ -144,7 +144,7 @@ const ProductDetail = () => {
               <AppIcons.ArrowRight />
               <h1 className='text-[#6d6d6d] cursor-pointer'>{product[0]?.name}</h1>
             </div>
-            <div className='flex pt-4 gap-5 bg-[#FFFFFF] shadow p-10 rounded-[5px] mb-5 max-md:flex-col max-md:p-2 max-md:shadow-sm '>
+            <div className='flex pt-4 gap-5 bg-[#FFFFFF]  p-10 rounded-[5px] mb-5 max-md:flex-col max-md:p-2 max-md:shadow-sm '>
               <div>
                 <div className='w-[500px] max-md:w-full'>
                   <img className='w-full' src={product[0]?.images[0]?.url_img} alt='' />
@@ -228,25 +228,25 @@ const ProductDetail = () => {
                   <Button
                     onClick={() => handleAddToCart(product[0]?._id, user?._id, product[0]?.stock, true)}
                     disabled={quantityProductDetail < 1 ? true : false}
-                    addClassNames='text-[16px] uppercase border border-[#C9C9C9] p-2 py-1 px-[30px] rounded-[10px]  font-semibold hover:bg-gray-100 duration-300 max-md:w-[50%] flex justify-center max-md:w-full'
+                    addClassNames='text-[16px] uppercase border border-[#C9C9C9] p-2 py-1 px-[30px] rounded-[10px]  font-semibold hover:bg-gray-100 duration-300 flex justify-center max-md:w-full'
                   >
                     Thêm giỏ hàng
                   </Button>
                   <Button
                     onClick={() => handleAddToCart(product[0]?._id, user?._id, product[0]?.stock, false)}
                     disabled={quantityProductDetail < 1 ? true : false}
-                    addClassNames='text-[16px] text-[#fff] bg-[#2563EB] p-2 w-[150px] flex justify-center rounded-[10px] uppercase hover:bg-blue-700 duration-300 max-md:w-[50%] max-md:w-full'
+                    addClassNames='text-[16px] text-[#fff] bg-[#2563EB] p-2 w-[150px] flex justify-center rounded-[10px] uppercase hover:bg-blue-700 duration-300 max-md:w-full'
                   >
                     Mua ngay
                   </Button>
                 </div>
               </div>
             </div>
-            <div className=' pt-4 gap-3 bg-[#FFFFFF] shadow max-md:shadow-sm p-10 max-md:p-0 rounded-[5px] mb-5 '>
+            <div className=' pt-4 gap-3 bg-[#FFFFFF] p-10 max-md:p-0 rounded-[5px] mb-5 '>
               <h1 className='font-bold text-[25px] pb-4'>Thông tin sản phẩm</h1>
               <span dangerouslySetInnerHTML={{ __html: product[0]?.description }} />
             </div>
-            <div className=' pt-4 gap-3 bg-[#FFFFFF] max-md:shadow-none shadow max-md:p-0 p-10 rounded-[5px]'>
+            <div className=' pt-4 gap-3 bg-[#FFFFFF]  max-md:p-0 p-10 rounded-[5px]'>
               <div className='flex gap-2 items-center'>
                 <h1 className='font-bold text-[25px] items-center text-[#2563EB]'>Bình luận sản phẩm</h1>
                 <AppIcons.ChatIcon addClassNames='text-[#2563EB]' />
@@ -267,7 +267,7 @@ const ProductDetail = () => {
                   {errors.content && <p className='text-red-500 text-sm pl-2 pb-4'>{errors.content.message}</p>}
                   <Button
                     disabled={commentContent ? false : true}
-                    className={`w-full duration-200  p-3 rounded-[50px] text-[#333] ${
+                    className={`w-full duration-200  p-3 rounded-full text-[#333] ${
                       commentContent ? 'bg-green-700 duration-200 text-[#fff]' : 'bg-slate-200'
                     }`}
                   >
@@ -337,7 +337,7 @@ const ProductDetail = () => {
         )}
       </div>
       <div>
-        <h1 className='py-4 text-[25px] font-semibold'>Sản phẩm liên quan khác</h1>
+        <h1 className='py-4 text-[25px] font-semibold text-gray-800 '>Sản phẩm liên quan khác</h1>
         {relatedProduct && relatedProduct?.length > 0 ? (
           <div className='flex'>
             <Swiper {...sliderConfigProduct} className='mySwiper rounded-[5px]'>

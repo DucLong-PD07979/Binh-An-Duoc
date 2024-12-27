@@ -1,6 +1,7 @@
 const Router = require('express').Router();
 const commentController = require('../controllers/commentsController/comments');
 
+Router.get('/list', commentController.getCommentsWithLimit);
 Router.get('/', commentController.getAllComments);
 Router.post('/:id', commentController.addComment);
 Router.get('/:id', commentController.getCommentsByProductId);
