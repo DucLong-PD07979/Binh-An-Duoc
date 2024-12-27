@@ -21,7 +21,8 @@ const PATH_ROUTERS_CLIENT = {
   NOTFOUND: '*',
   ABOUT: 'gioi-thieu',
   CONTACT: 'lien-he',
-  CHAT: 'tu-van'
+  CHAT: 'tu-van',
+  RESULT_ORDER: 'ket-qua-dat-hang'
 };
 
 const PATH_ROUTERS_ADMIN = {
