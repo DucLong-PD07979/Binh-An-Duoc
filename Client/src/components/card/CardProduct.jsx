@@ -7,7 +7,7 @@ const CardProduct = ({ products, handleAddToCart }) => {
   if (!products) return null;
 
   return (
-    <div className='w-full shadow-xl rounded-[10px] grid grid-rows-[auto,1fr]' key={products?._id}>
+    <div className='w-full shadow-xl rounded-xl grid grid-rows-[auto,1fr]' key={products?._id}>
       <Link to={`/product/${products?.slug}`}>
         <img
           className='w-full rounded-tl-[10px] rounded-tr-[10px] h-[300px] object-cover transform transition-transform duration-300 hover:scale-90'
