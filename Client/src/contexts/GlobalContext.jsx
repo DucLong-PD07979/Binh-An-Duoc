@@ -17,8 +17,18 @@ const DialogRecommend = ({ visited, onVisited }) => {
         <h3 className='text-gray-700 font-medium'>👋 Chào mừng bạn đến với nhà thuốc Bình An Dược </h3>
         <div className='mt-2'>
           <p className='text-base text-blue-500 '>Gợi ý cho bạn!</p>
+          <p className='max-w-[73%] text-gray-700 mt-4'>
+            Để khởi động server có thể mất một chút thời gian,hi vọng bạn dành một chút thời gian và tải lại trang web
+            🥰🥰
+          </p>
+
+          <p className='max-w-[73%] text-gray-700 mt-4'>
+            Để xem đầy đủ chức năng của admin bạn có thể đăng nhập với tài khoản:
+          </p>
           <p className='max-w-[73%] text-gray-700'>
-            Để xem đầy đủ chức năng của admin bạn có thể đăng nhập với tài khoản: admin@gmail.com - mk :123123123
+            <span className='bg-gradient-to-r from-yellow-400 to-pink-500 text-transparent bg-clip-text'>
+              admin@gmail.com - mk: 123123123
+            </span>
           </p>
           <p className='max-w-[73%] text-gray-700'>Sau khi đăng nhập di chuột vào avatar để tới trang quản lý 🩷🩷</p>
         </div>
