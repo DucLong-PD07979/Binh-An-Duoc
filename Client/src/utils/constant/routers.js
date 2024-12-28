@@ -1,9 +1,3 @@
-// tai-khoan
-// li-su-don-hang
-// chinh-sach-bao-hanh
-// chinh-sach-thanh-toan
-// don-hang-dan-xu-ly
-
 const PATH_ROUTERS_CLIENT = {
   HOMEPAGE: '/',
   PRODUCT_SEARCH: 'product/search',
