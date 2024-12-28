@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const VNPAY_ROUTER = `${import.meta.env.VITE_API_URL}/api/v1/vnpay`;
+const VNPAY_ROUTER = `https://binh-an-duoc-api.onrender.com/api/v1/vnpay`;
 
 const vnpayServices = {
   createPayment: async (requestBody) => {
