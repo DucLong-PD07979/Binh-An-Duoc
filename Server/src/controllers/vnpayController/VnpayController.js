@@ -101,7 +101,7 @@ const Vnpay = {
           });
 
           await newTransaction.save();
-          return res.redirect(process.env.URL_CLIENT);
+          return res.redirect(`${process.env.URL_CLIENT}?type_order=successful`);
         }
       } else {
         const { payment_method_id, _id, status, total_price } = newOrderUpdate;
@@ -123,7 +123,10 @@ const Vnpay = {
           status,
           amount: total_price
         });
-
+        const orderDelete = await OrderModel.findByIdAndDelete(orderId);
+        if (orderDelete) {
+          await OrderDetails.deleteMany({ order_id: orderId });
+        }
         await newTransaction.save();
         return res.redirect(process.env.URL_CLIENT);
       }
@@ -133,7 +136,7 @@ const Vnpay = {
       if (orderDelete) {
         await OrderDetails.deleteMany({ order_id: orderId });
       }
-      return res.redirect(process.env.URL_CLIENT);
+      return res.redirect(res.redirect(`${process.env.URL_CLIENT}?type_order=failed`));
     }
   },
   querydr: async (req, res) => {}

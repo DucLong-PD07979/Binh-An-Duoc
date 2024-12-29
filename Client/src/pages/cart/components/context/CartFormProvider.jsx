@@ -10,6 +10,7 @@ import { PAYMENT_METHODS_CODE } from '../../../../utils/constant/common';
 import cartServices from '../../../../services/cartService';
 import { uesCheckOutContext } from './CheckOutProvider';
 import { useNavigate } from 'react-router-dom';
+import { PATH_ROUTERS_CLIENT } from '../../../../utils/constant/routers';
 
 const CartFormContext = createContext();
 
@@ -20,10 +21,10 @@ export const useCartFormContext = () => {
 const CartFormProvider = ({ children, setShowQrCode }) => {
   const [isLoadingCreateOrder, setIsLoadingCreateOrder] = useState(false);
   const { user } = useContext(UserContext);
-  const { cart , setCart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
   const { address_state, handleOrderWithVnpay } = uesCheckOutContext();
   const [orderSuccsess, setOrderSuccsess] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     handleSubmit,
     register,
@@ -45,13 +46,12 @@ const CartFormProvider = ({ children, setShowQrCode }) => {
 
   const handleSubmitForm = async (data) => {
     try {
-      if (user?.
-        is_active === 0){
-          return showToastError("Tài khoản của bạn đang bị hạn chế vui lòng liên hệ admin")
-        }else if(!user?.emailVerify){
-          return  showToastError("Tài khoản của bạn chưa kích hoạt vui lòng liên hệ admin")
-        }
-        setIsLoadingCreateOrder(true);
+      if (user?.is_active === 0) {
+        return showToastError('Tài khoản của bạn đang bị hạn chế vui lòng liên hệ admin');
+      } else if (!user?.emailVerify) {
+        return showToastError('Tài khoản của bạn chưa kích hoạt vui lòng liên hệ admin');
+      }
+      setIsLoadingCreateOrder(true);
       const { receiver, phone, street, prescriptionImage, ...orderDataRest } = data;
       const formData = new FormData();
 
@@ -112,25 +112,23 @@ const CartFormProvider = ({ children, setShowQrCode }) => {
           });
           reset();
         }
-        setOrderSuccsess(orderResponse)
+        setOrderSuccsess(orderResponse);
       } else if (orderDataRest.payment_method_id === PAYMENT_METHODS_CODE.BANK_ID && orderSuccsess) {
-        
         await orderServices.createOrder(formData);
-        setShowQrCode(true)
+        setShowQrCode(true);
       } else {
         const orderNew = await orderServices.createOrder(formData);
         if (orderNew) {
           for (let productItem of cart) {
             await cartServices.deleteProductCartByUserId(user?._id, productItem.productId._id);
           }
-          setCart([])
-          showToastSuccess('Đơn đã được đặt');
+          setCart([]);
         }
         reset();
-        navigate('/')
+        navigate(`/${PATH_ROUTERS_CLIENT.RESULT_ORDER}?type_order=successful`);
       }
     } catch (error) {
-      showToastError('Đã xảy ra lỗi khi thanh toán ');
+      navigate(`/${PATH_ROUTERS_CLIENT.RESULT_ORDER}?type_order=failed`);
     } finally {
       setIsLoadingCreateOrder(false);
     }
