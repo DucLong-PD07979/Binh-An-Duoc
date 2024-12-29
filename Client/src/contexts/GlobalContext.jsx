@@ -51,7 +51,7 @@ const GlobalContextProvider = ({ children }) => {
     <GlobalContext.Provider value={visited}>
       <SocketProvider>
         <ConfirmDialogProvider>
-          <GoogleOAuthProvider clientId={'1060538151130-fugnan197mqpku6dp2a9vlhnb0vi9l1j.apps.googleusercontent.com'}>
+          <GoogleOAuthProvider clientId={'344005594757-a17k5i4m687dqlmujiemrlagqifmujg7.apps.googleusercontent.com'}>
             <CartProvider>
               <ToggleFormProvider>
                 <HanldeCartProvider>

@@ -7,7 +7,7 @@ const SocketContext = createContext();
 const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
-  const SERVER_URL = apiUrl;
+  const SERVER_URL = 'https://binh-an-duoc-api.onrender.com';
   useEffect(() => {
     const socketIntance = io(SERVER_URL);
     setSocket(socketIntance);
